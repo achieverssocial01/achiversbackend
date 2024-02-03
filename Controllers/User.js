@@ -8,6 +8,11 @@ const userregister = async (req, res) => {
   if (!name || !phone || !email || !password || !referalID) {
     return res.status(409).send(" all fields are required");
   }
+  if(referal){
+    const referaluser = await userCollection.findOne({referalID:referal})
+    referaluser.referalpoint = referaluser.referalpoint +10;
+   await referaluser.save()
+  }
   try {
     const data = await userCollection.create({
       name,
@@ -17,7 +22,6 @@ const userregister = async (req, res) => {
       referal,
       referalID,
     });
-
     res.status(200).send(data);
   } catch (error) {
     res.status(500).send(error);

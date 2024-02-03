@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
    referalID:{
     type:String,
     required:true
+   },
+   referalpoint:{
+    type:Number,
+    default:0,
    }
 })
 
