@@ -7,9 +7,10 @@ const generateFileName = (bytes = 32) =>
 
 
 const addproducts =async(req,res)=>{
-    const {title,price,description} =req.body;
+    const {title,price,description,information} =req.body;
+    
     const file =req.file;
-    if(!title || !price){
+    if(!title || !price || !description || !information){
         return res.status(400).send({msg:"pls enter all details"})
     }
     try {
@@ -22,6 +23,7 @@ const addproducts =async(req,res)=>{
             title,
             price,
             description,
+            information,
             img:imageName
         })
         data.imgurl = "https://d1t03wtbg7poo.cloudfront.net/"+data.img

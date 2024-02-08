@@ -9,6 +9,11 @@ const productSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    information:{
+        type:String,
+        required:true,
+        default: 'information'
+    },
     price: {
         type:Number,
         required:true
@@ -21,6 +26,5 @@ const productSchema = new mongoose.Schema({
     }
    
 })
-
 const productCollection= mongoose.model("productCollection",productSchema)
 export {productCollection}

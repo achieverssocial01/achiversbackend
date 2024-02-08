@@ -4,10 +4,9 @@ const dbUrl = process.env.DB_URL
 
 export const dbConnection = async()=>{
     try {
-        await mongoose.connect(dbUrl )
-        console.log('Database Connected')
+        await mongoose.connect(dbUrl)
+    
     } catch (error) {
-console.log('Error While Connecting with Database ', error.message)
 process.exit(1);
     }
 }

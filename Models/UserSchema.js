@@ -11,7 +11,23 @@ const userSchema = new mongoose.Schema({
     },
      email:{
     type:String,
-     required:true
+     required:true,
+     unique:true
+   },
+     gender:{
+    type:String,
+   },
+     state:{
+    type:String,
+   },
+     city:{
+    type:String,
+   },
+     pincode:{
+    type:Number,
+   },
+    address:{
+    type:String,
    },
     password:{
     type:String,
@@ -27,8 +43,22 @@ const userSchema = new mongoose.Schema({
    referalpoint:{
     type:Number,
     default:0,
-   }
+   },
+   products:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"productCollection"
+        }
+   ],
+   status:{
+    type:String,
+    default:"pending"
+   },
+
+   referuser:[]
 })
+
+
 
 const userCollection= mongoose.model("userCollection",userSchema)
 export {userCollection}
