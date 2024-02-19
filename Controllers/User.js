@@ -141,27 +141,27 @@ const Buycourse = async (req, res) => {
     if (isalreadyproductpurchased) {
       return res.status(200).send("You already purchased this product");
     }
-    let complimentry ;
+    let complimentry =[];
     const userinfo = await userCollection.findById({ _id: userid })
     const productinfo = await productCollection.findById({ _id: productid })
     const allproducts = await productCollection.find();
     for (let product of allproducts) {
       if (product?.price <= productinfo?.price) {
-         if(product?.price < productinfo?.price){
-          complimentry = product?._id;
-         }
+        //  if(product?.price < productinfo?.price){
+        //   complimentry = product?._id;
+        //  }
         if (userinfo?.products?.length == 0) {
           userinfo?.products?.push(product?._id)
+          complimentry.push(product?._id)
         }
         else {
           let value = userinfo?.products?.includes(product?._id)
   
           if (!value) {
             userinfo?.products?.push(product?._id)
+            complimentry.push(product?._id)
           }
-
         }
-
       }
     }
     const datauser = await userinfo.save();

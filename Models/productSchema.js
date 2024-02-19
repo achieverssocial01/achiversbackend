@@ -23,7 +23,19 @@ const productSchema = new mongoose.Schema({
     },
     imgurl:{
         type:String,
+    },
+    courseOverview:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"productCollection"
+        }
+   ],
+   content:[
+    {
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"productCollection"
     }
+],
    
 })
 const productCollection= mongoose.model("productCollection",productSchema)

@@ -24,10 +24,13 @@ const TransactionSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"productCollection",
     },
-    complementry:{
+    complementry:
+    [
+    {
         type:mongoose.Schema.Types.ObjectId,
-        ref:"productCollection",
-    },
+        ref:"productCollection"
+    }
+],
 },{timestamps:true})
 
 

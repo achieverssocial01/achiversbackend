@@ -50,7 +50,6 @@ const getsingleproduct =async (req,res)=>{
         const id = req.params.id;
     const singleprduct = await productCollection.findById({_id:id})
     return res.status(200).send(singleprduct);
-
   } catch (error) {
     return res.status(500).send(error.message)
     }
